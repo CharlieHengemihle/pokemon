@@ -7,6 +7,7 @@ export function usePokemon() {
   const [types, setTypes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedType, setSelectedType] = useState('all');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +22,7 @@ export function usePokemon() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchTypes();
-      setTypes([{ type: 'all' }, ...data]);
+      setTypes(data);
     };
     fetchData();
   }, []);
@@ -38,6 +39,12 @@ export function usePokemon() {
     setSelectedType(type);
     setLoading(false);
   };
+  const handleSearch = async () => {
+    setLoading(true);
+    const data = await fetchPokemon(selectedType, query);
+    setPokemon(data);
+    setLoading(false);
+  };
 
-  return { pokemon, types, handleTypeChange, loading, selectedType };
+  return { pokemon, types, handleTypeChange, loading, selectedType, query, setQuery, handleSearch };
 }

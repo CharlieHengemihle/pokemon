@@ -10,9 +10,14 @@ export async function fetchTypes() {
   return data;
 }
 
-export async function fetchPokemon(type) {
+export async function fetchPokemon(type, query) {
   const params = new URLSearchParams();
-  params.set('type', type);
+  if (query) {
+    params.set('pokemon', query);
+  }
+  if (type !== 'all') {
+    params.set('type', type);
+  }
   const resp = await fetch(
     `https://alchemy-pokedex.herokuapp.com/api/pokedex/?${params.toString()}`
   );

@@ -4,9 +4,11 @@ import Select from '../Select/Select.js';
 import Pokelab from '../../Pokelab.jpg';
 
 import './Main.css';
+import Query from '../Query/Query.js';
 
 export default function Main() {
-  const { pokemon, types, handleTypeChange, loading, selectedType } = usePokemon();
+  const { pokemon, types, handleTypeChange, loading, selectedType, query, setQuery, handleSearch } =
+    usePokemon();
   // console.log('type', types);
   return (
     <main className="mainDisplay" style={{ backgroundImage: `url(${Pokelab})` }}>
@@ -15,11 +17,13 @@ export default function Main() {
       ) : (
         <>
           <Select
-            selectedType={selectedType}
-            types={types}
-            handleTypeChange={handleTypeChange}
+            {...{ selectedType, types, handleTypeChange }}
+            // selectedType={selectedType}
+            // types={types}
+            // handleTypeChange={handleTypeChange}
             className="selectDisplay"
           />
+          <Query {...{ query, setQuery, handleSearch }} />
           <div className="pokemonDisplay">
             {pokemon.map((pokemon) => (
               <PokemonCard key={pokemon._id} {...pokemon} />
