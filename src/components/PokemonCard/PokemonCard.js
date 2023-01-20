@@ -7,9 +7,8 @@ export default function PokemonCard({ pokemon, type_1, type_2, url_image, height
       <h2>{pokemon}</h2>
       <p>
         {type_1} {type_2}
-      </p>
-      <p>
-        Height:{height} ft Weight:{weight} lbs
+        <br></br>
+        Height:{height} ft <br></br>Weight:{weight} lbs
       </p>
     </div>
   );
