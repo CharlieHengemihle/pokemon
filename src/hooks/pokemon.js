@@ -5,11 +5,15 @@ import { fetchInitialPokemon, fetchTypes, fetchPokemon } from '../services/fetch
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [types, setTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedType, setSelectedType] = useState('all');
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       const data = await fetchInitialPokemon();
       setPokemon(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -17,15 +21,23 @@ export function usePokemon() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchTypes();
-      setTypes(data);
+      setTypes([{ type: 'all' }, ...data]);
     };
     fetchData();
   }, []);
 
   const handleTypeChange = async (type) => {
-    const data = await fetchPokemon(type);
-    setPokemon(data);
+    setLoading(true);
+    if (type === 'all') {
+      const allData = await fetchInitialPokemon();
+      setPokemon(allData);
+    } else {
+      const data = await fetchPokemon(type);
+      setPokemon(data);
+    }
+    setSelectedType(type);
+    setLoading(false);
   };
 
-  return { pokemon, types, handleTypeChange };
+  return { pokemon, types, handleTypeChange, loading, selectedType };
 }

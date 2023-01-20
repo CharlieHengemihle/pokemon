@@ -1,11 +1,12 @@
 .pokemonCard {
   border: 1px solid grey;
   height: 30vh;
+  width: 25vw;
   margin: 10px;
   border-radius: 5%;
   padding: 5px;
 }
 
 .pokemonCard img {
-  width: 20vh;
+  height: 50%;
 }
