@@ -1,0 +1,15 @@
+header {
+  color: rgb(50, 45, 45);
+  height: 5vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  border-bottom: 2px black solid;
+  font-weight: 700;
+  font-size: 35px;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+}

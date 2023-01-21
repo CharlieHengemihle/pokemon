@@ -1,0 +1,24 @@
+.pokemonCard {
+  display: block;
+  border: 1px solid grey;
+  height: 25vh;
+  width: 22vw;
+  margin: 10px;
+  border-radius: 5%;
+  padding: 5px;
+  background-color: rgba(147, 171, 162, 0.791);
+}
+
+.pokemonCard img {
+  height: 60%;
+}
+
+.pokemonCard p {
+  font-weight: 500;
+  font-size: medium;
+}
+
+h2 {
+  margin-top: -10px;
+  margin-bottom: -20px;
+}
