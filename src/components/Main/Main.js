@@ -16,14 +16,16 @@ export default function Main() {
         <p className="loader">Loading...</p>
       ) : (
         <>
-          <Select
-            {...{ selectedType, types, handleTypeChange }}
-            // selectedType={selectedType}
-            // types={types}
-            // handleTypeChange={handleTypeChange}
-            className="selectDisplay"
-          />
-          <Query {...{ query, setQuery, handleSearch }} />
+          <div className="selectDisplay">
+            <Query {...{ query, setQuery, handleSearch }} />
+            <Select
+              {...{ selectedType, types, handleTypeChange }}
+              // selectedType={selectedType}
+              // types={types}
+              // handleTypeChange={handleTypeChange}
+              className="selectDisplay"
+            />
+          </div>
           <div className="pokemonDisplay">
             {pokemon.map((pokemon) => (
               <PokemonCard key={pokemon._id} {...pokemon} />
